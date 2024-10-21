@@ -36,7 +36,7 @@ for link in links:
 for price in prices:
     list_prices_text = price.get_text().strip()
     if '$' in list_prices_text:
-        home_prices.append(list_prices_text.strip('+ /mo 1 bdg'))
+        home_prices.append(list_prices_text.strip('+ /mo 1 bd'))
 
 for address in addresses:
     address_text = address.get_text().strip()
