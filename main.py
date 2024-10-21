@@ -36,7 +36,7 @@ for link in links:
 for price in prices:
     list_prices_text = price.get_text().strip()
     if '$' in list_prices_text:
-        home_prices.append(list_prices_text.strip('+ /mo 1 bd'))
+        home_prices.append(list_prices_text.strip('+ /mo 1 bdg'))
 
 for address in addresses:
     address_text = address.get_text().strip()
@@ -45,28 +45,24 @@ for address in addresses:
         clean_address = ','.join(part.strip() for part in address_parts).replace('|', '')
         home_address.append(clean_address)
 
-print(home_prices)
 
-# print(home_links)
-# print(home_address)
+#Filling Google Form
 
-# #Filling Google Form
+for i in range(len(home_links)):
+    address_space = driver.find_element(By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[1]/div/div/div[2]/div/div[1]/div/div[1]/input')
+    price_space = driver.find_element(By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[2]/div/div/div[2]/div/div[1]/div/div[1]/input')
+    link_space = driver.find_element(By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[3]/div/div/div[2]/div/div[1]/div/div[1]/input')
+    submit_btn = driver.find_element(By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[3]/div[1]/div[1]/div/span')
 
-# for i in range(len(home_links)):
-#     address_space = driver.find_element(By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[1]/div/div/div[2]/div/div[1]/div/div[1]/input')
-#     price_space = driver.find_element(By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[2]/div/div/div[2]/div/div[1]/div/div[1]/input')
-#     link_space = driver.find_element(By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[3]/div/div/div[2]/div/div[1]/div/div[1]/input')
-#     submit_btn = driver.find_element(By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[3]/div[1]/div[1]/div/span')
-
-#     address_space.send_keys(home_address[i])
-#     time.sleep(2)
-#     price_space.send_keys(home_prices[i])
-#     time.sleep(2)
-#     link_space.send_keys(home_links[i])
-#     time.sleep(2)
-#     submit_btn.click()
-#     time.sleep(5)
-#     submit_another_answer = driver.find_element(By.XPATH, '/html/body/div[1]/div[2]/div[1]/div/div[4]/a')
-#     submit_another_answer.click()
+    address_space.send_keys(home_address[i])
+    time.sleep(2)
+    price_space.send_keys(home_prices[i])
+    time.sleep(2)
+    link_space.send_keys(home_links[i])
+    time.sleep(2)
+    submit_btn.click()
+    time.sleep(5)
+    submit_another_answer = driver.find_element(By.XPATH, '/html/body/div[1]/div[2]/div[1]/div/div[4]/a')
+    submit_another_answer.click()
 
 driver.quit()
